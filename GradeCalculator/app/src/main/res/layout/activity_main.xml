@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="7">
+        android:orientation = "vertical"
+        android.id = "@+id/tableLayout">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background = "#072448">
+
+            <TextView
+                android:id="@+id/assignmentsTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:text="@string/assignments"
+                android:textSize="22sp"
+                android:layout_weight="2"
+                android:paddingStart="20dip"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/assignmentsEditText"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:hint="INPUT YOUR SCORE HERE"
+                android:textColorHint="#AAB4BB"
+                android:textColor="@color/white" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background = "#54D2D2">
+
+            <TextView
+                android:id="@+id/participationTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:text="@string/participation"
+                android:textSize="22sp"
+                android:layout_weight="2"
+                android:paddingStart="20dip"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/participationEditView"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:hint="INPUT YOUR SCORE HERE"
+                android:textColorHint="#AAB4BB"
+                android:textColor="@color/white" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background = "#FFCB00">
+
+            <TextView
+                android:id="@+id/projectTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:text="@string/project"
+                android:textSize="22sp"
+                android:layout_weight="2"
+                android:paddingStart="20dip"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/projectEditView"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:hint="INPUT YOUR SCORE HERE"
+                android:textColorHint="#AAB4BB"
+                android:textColor="@color/white" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background = "#F8AA4B">
+
+            <TextView
+                android:id="@+id/quizzesTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:text="@string/quizzes"
+                android:textSize="22sp"
+                android:layout_weight="2"
+                android:paddingStart="20dip"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/quizzesEditView"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:hint="INPUT YOUR SCORE HERE"
+                android:textColorHint="#AAB4BB"
+                android:textColor="@color/white" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:background = "#FF6150">
+
+            <TextView
+                android:id="@+id/examTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:text="@string/exam"
+                android:textSize="22sp"
+                android:layout_weight="2"
+                android:paddingStart="20dip"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/examEditView"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:hint="INPUT YOUR SCORE HERE"
+                android:textColorHint="#AAB4BB"
+                android:textColor="@color/white" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:background = "#FF6150">
+
+            <TextView
+                android:id="@+id/setExamMark"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:paddingStart="20dip"
+                android:paddingTop="20dip"
+                android:text="Set exam mark"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/examSeekBar"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:progress="80"
+                android:max = "100"
+                android:layout_weight = "2"
+                android:indeterminate= "false"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background = "#50b2ff">
+
+            <TextView
+                android:id="@+id/finalMarkTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:text="@string/finalMark"
+                android:textSize="22sp"
+                android:layout_weight="2"
+                android:paddingStart="20dip"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/finalMarkEditView"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:hint="INPUT YOUR SCORE HERE"
+                android:textColorHint="#AAB4BB"
+                android:textColor="@color/white" />
+        </TableRow>
+    </TableLayout>
+
+
+
+    <LinearLayout
+        android:orientation = "horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/resetAll" />
+    </LinearLayout>
+
+</LinearLayout>

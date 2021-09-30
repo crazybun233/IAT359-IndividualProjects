@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GradeCalculator</string>
+    <string name = "assignments">Assignments</string>
+    <string name = "participation">Participation</string>
+    <string name = "project">Project</string>
+    <string name = "quizzes">Quizzes</string>
+    <string name = "exam">Exam</string>
+    <string name = "setExamMark">Set Exam Mark</string>
+    <string name = "finalMark">Final Mark</string>
+    <string name = "resetAll">Reset All</string>
+    <string name = "courseGradeCalculator">Course Grade Calculator</string>
+</resources>
