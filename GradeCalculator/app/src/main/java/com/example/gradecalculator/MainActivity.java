@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     private static final String PROJECT = "PROJECT";
     private static final String QUIZZES = "QUIZZES";
     private static final String EXAM = "EXAM";
+    private static final String FINALMARK = "FINAL MARK";
 
     private double assignments;//assignments mark entered by the users
     private EditText assignmentEditText;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     private double quizzes;//quizzes marks entered by the users
     private EditText quizzesEditText;
     private TextView finalMarkTextView;//The final mark display
+    private double finalMark;
     private EditText examMarkEditText;
     private SeekBar examSeekBar;
     private double examValue;//the value that users input
@@ -43,35 +45,39 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(DEBUG_TAG, "onCreate() is called");
         setContentView(R.layout.activity_main);
 
-        //get references to the controls in the layout
-        assignmentEditText = findViewById(R.id.assignmentsEditView);
-        assignmentEditText.addTextChangedListener((TextWatcher) this);
+            //get references to the controls in the layout
+            assignmentEditText = findViewById(R.id.assignmentsEditView);
+            assignmentEditText.addTextChangedListener((TextWatcher) this);
 
-        participationEditText = findViewById(R.id.participationEditView);
-        participationEditText.addTextChangedListener((TextWatcher) this);
+            participationEditText = findViewById(R.id.participationEditView);
+            participationEditText.addTextChangedListener((TextWatcher) this);
 
-        projectEditText = findViewById(R.id.projectEditView);
-        projectEditText.addTextChangedListener((TextWatcher) this);
+            projectEditText = findViewById(R.id.projectEditView);
+            projectEditText.addTextChangedListener((TextWatcher) this);
 
-        quizzesEditText = findViewById(R.id.quizzesEditView);
-        quizzesEditText.addTextChangedListener((TextWatcher) this);
+            quizzesEditText = findViewById(R.id.quizzesEditView);
+            quizzesEditText.addTextChangedListener((TextWatcher) this);
 
-        examMarkEditText = findViewById(R.id.examEditView);
+            examMarkEditText = findViewById(R.id.examEditView);
 
-        finalMarkTextView = findViewById(R.id.finalMarkRightTextView);
+            finalMarkTextView = findViewById(R.id.finalMarkRightTextView);
 
-        examSeekBar = findViewById(R.id.examSeekBar);
-        examSeekBar.setOnSeekBarChangeListener(examSeekBarListener);
+            examSeekBar = findViewById(R.id.examSeekBar);
+            examSeekBar.setOnSeekBarChangeListener(examSeekBarListener);
+            examMarkEditText.setText("80");
+            examValue = 80;
+            updateStandard();
+            resetButton = findViewById(R.id.resetButton);
+            resetButton.setOnClickListener((View.OnClickListener) this);
 
-        resetButton = findViewById(R.id.resetButton);
-        resetButton.setOnClickListener((View.OnClickListener) this);
     }
 
     private void updateStandard(){
         //calculate the final mark
-        double finalMark = assignments * 15/100 + participation * 15/100 +
+        finalMark = assignments * 15/100 + participation * 15/100 +
                 project * 20/100 + quizzes * 20/100 + examValue * 30/100;
         //set the text in finalMarkRightTextView to finalMark
         //"%.02f"represents the float in 2 decimals
@@ -88,11 +94,30 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     protected void onSaveInstanceState(Bundle outState) {
         //save values of assignments, participation, project, quizzes, and examValue
         super.onSaveInstanceState(outState);
+        Log.i(DEBUG_TAG, "onSaveInstanceState() is called");
         outState.putDouble(ASSIGNMENTS, assignments);
+        Log.i("ASSIGNMENTS", assignments+"");
         outState.putDouble(PROJECT,project);
         outState.putDouble(QUIZZES,quizzes);
         outState.putDouble(PARTICIPATION,participation);
         outState.putDouble(EXAM,examValue);
+        //save values of final mark
+        outState.putDouble(FINALMARK, finalMark);
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i(DEBUG_TAG, "onRestoreInstanceState() is called");
+
+        assignments = savedInstanceState.getDouble("ASSIGNMENTS");
+        Log.i("ASSIGNMENTS on Restore", assignments+"");
+        project = savedInstanceState.getDouble("PROJECT");
+        quizzes = savedInstanceState.getDouble("QUIZZES");
+        participation = savedInstanceState.getDouble("PARTICIPATION");
+        examValue = savedInstanceState.getDouble("EXAM");
+        updateStandard();
+
+
     }
 
     // create the anonymous inner-class object examSeekBarListener that responds to examSeekBar events.
@@ -138,6 +163,8 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
                     assignmentEditText.setText("");
                     assignmentEditText.setHint("ENTER 0 - 100");
                     assignments = 0;
+                }else{
+                    updateStandard();
                 }
             }
             //If the input is not correct, then assign assignments variable 0.0 value
@@ -155,6 +182,8 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
                     participationEditText.setText("");
                     participationEditText.setHint("ENTER 0 - 100");
                     participation = 0;
+                }else{
+                    updateStandard();
                 }
             }
             catch(NumberFormatException e){
@@ -171,6 +200,8 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
                     projectEditText.setText("");
                     projectEditText.setHint("ENTER 0 - 100");
                     project = 0;
+                }else{
+                    updateStandard();
                 }
             }
             catch(NumberFormatException e){
@@ -187,6 +218,8 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
                     quizzesEditText.setText("");
                     quizzesEditText.setHint("ENTER 0 - 100");
                     quizzes = 0;
+                }else{
+                    updateStandard();
                 }
             }
             catch(NumberFormatException e){
@@ -197,6 +230,9 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
 
     @Override
     public void afterTextChanged(Editable editable) {
+        if(editable.toString().length() > 1 && editable.toString().startsWith("0")){
+            editable.delete(0,1);
+        }
 
     }
 
@@ -209,21 +245,23 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     public void onClick(View view) {
         assignmentEditText.setText("");
         assignmentEditText.setHint("INPUT YOUR SCORE HERE");
+        assignments = 0;
 
         participationEditText.setText("");
         participationEditText.setHint("INPUT YOUR SCORE HERE");
+        participation = 0;
 
         projectEditText.setText("");
         projectEditText.setHint("INPUT YOUR SCORE HERE");
+        project = 0;
 
         quizzesEditText.setText("");
         quizzesEditText.setHint("INPUT YOUR SCORE HERE");
+        quizzes = 0;
 
         finalMarkTextView.setText("");
         finalMarkTextView.setHint("YOUR FINAL MARK");
 
         examSeekBar.setProgress(80);
-
-
     }
 }
