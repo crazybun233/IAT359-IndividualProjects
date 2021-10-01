@@ -34,7 +34,7 @@
                 android:textColor="@color/white"/>
 
             <EditText
-                android:id="@+id/assignmentsEditText"
+                android:id="@+id/assignmentsEditView"
                 android:layout_width="139dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -174,7 +174,8 @@
                 android:minHeight="48dp"
                 android:hint="INPUT YOUR SCORE HERE"
                 android:textColorHint="#AAB4BB"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:focusable="false"/>
         </TableRow>
 
         <TableRow
@@ -214,7 +215,7 @@
             android:background = "#50b2ff">
 
             <TextView
-                android:id="@+id/finalMarkTextView"
+                android:id="@+id/finalMarkLeftTextView"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:text="@string/finalMark"
@@ -224,16 +225,14 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
 
-            <EditText
-                android:id="@+id/finalMarkEditView"
+            <TextView
+                android:id="@+id/finalMarkRightTextView"
                 android:layout_width="139dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
-                android:ems="10"
-                android:inputType="numberDecimal"
                 android:minHeight="48dp"
-                android:hint="INPUT YOUR SCORE HERE"
+                android:hint="YOUR FINAL MARK"
                 android:textColorHint="#AAB4BB"
                 android:textColor="@color/white" />
         </TableRow>
